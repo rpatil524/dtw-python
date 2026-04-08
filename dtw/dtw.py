@@ -178,13 +178,13 @@ on user-defined windowing, and a discussion of the (mis)naming of the
 “Itakura” parallelogram as a global constraint. Some windowing functions
 may require parameters, such as the ``window_size`` argument.
 
-Open-ended alignment, i_e. semi-unconstrained alignment, can be selected
+Open-ended alignment, i.e. semi-unconstrained alignment, can be selected
 via the ``open_end`` switch. Open-end DTW computes the alignment which
 best matches all of the query with a *leading part* of the reference.
-This is proposed e_g. by Mori (2006), Sakoe (1979) and others.
+This is proposed e.g. by Mori (2006), Sakoe (1979) and others.
 Similarly, open-begin is enabled via ``open_begin``; it makes sense when
 ``open_end`` is also enabled (subsequence finding). Subsequence
-alignments are similar e_g. to UE2-1 algorithm by Rabiner (1978) and
+alignments are similar e.g. to UE2-1 algorithm by Rabiner (1978) and
 others. Please find a review in Tormene et al. (2009).
 
 If the warping function is not required, computation can be sped up
@@ -230,7 +230,7 @@ Cost matrices (both input and output) have query elements arranged
 row-wise (first index), and reference elements column-wise (second
 index). They print according to the usual convention, with indexes
 increasing down- and rightwards. Many DTW papers and tutorials show
-matrices according to plot-like conventions, i_e. reference index
+matrices according to plot-like conventions, i.e. reference index
 growing upwards. This may be confusing.
 
 A fast compiled version of the function is normally used. Should it be
@@ -319,9 +319,16 @@ Plot the (unwarped) query and the inverse-warped reference
 
 
 
+Contour plots of the cumulative cost matrix
+similar to: ``alignment.plot(type="density")``
+or ``dtwPlotDensity(alignment)``. 
 
+``keep_internals=True`` so we can look into the cost matrix
 
+>>> alignment = dtw(query, reference, keep_internals=True)
 
+>>> plt.contour(alignment.costMatrix.T, origin="lower")	# doctest: +SKIP
+>>> plt.plot(alignment.index1, alignment.index2, 'r-')	# doctest: +SKIP
 
 
 A hand-checkable example
