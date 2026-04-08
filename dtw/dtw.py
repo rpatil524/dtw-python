@@ -354,6 +354,33 @@ Asymmetric: visiting 1 is required twice
 >>> float(da.distance)
 2.0
 
+
+Multivariate alignment example
+
+>>> t_ref = np.linspace(0, 2*np.pi, num=100)
+>>> reference = np.column_stack([np.cos(t_ref), np.sin(t_ref)])
+
+>>> u = np.linspace(0, 1, num=70)
+>>> t_query = 2*np.pi*(u**1.5)
+>>> query = np.column_stack([np.cos(t_query), np.sin(t_query)])
+
+Explicitly choose the local distance for the multivariate samples
+
+>>> alignment_mv = dtw(query, reference,
+...                    dist_method="euclidean",
+...                    keep_internals=True)
+
+Equivalent precomputed local cost matrix:
+
+>>> # local_cost = scipy.spatial.distance.cdist(query, reference,
+>>> #                                          metric="euclidean")
+>>> # alignment_mv = dtw(local_cost, keep_internals=True)
+
+>>> plt.plot(reference[:, 0], reference[:, 1])		# doctest: +SKIP
+>>> plt.plot(query[:, 0], query[:, 1])			# doctest: +SKIP
+
+>>> plt.plot(alignment_mv.index1, alignment_mv.index2)	# doctest: +SKIP
+
 """
 
 
