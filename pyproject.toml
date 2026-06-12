@@ -63,6 +63,7 @@ plots = ["matplotlib"]
 # https://setuptools.pypa.io/en/latest/userguide/datafiles.html
 namespaces = true
 where = ["."]
+include = ["dtw", "dtw.*"]
 
 [tool.setuptools.package-data]
 "dtw.data" = ["*.csv"]
@@ -112,4 +113,3 @@ dev = [
     "ipython",
     "matplotlib"
 ]
-

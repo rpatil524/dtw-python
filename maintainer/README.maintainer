@@ -17,7 +17,7 @@ Deploying
 Make sure all your changes are committed (including an entry in HISTORY.rst).
 Then run::
 
-$ uvx run bump-my-version patch    # possible: major / minor / patch
+$ uvx bump-my-version bump patch    # possible: major / minor / patch
 $ git push --follow-tags
 $ v=$(git tag --points-at HEAD) && gh release create $v --title $v
 
