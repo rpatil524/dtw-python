@@ -17,7 +17,7 @@ jobs:
           # - "3.15"
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
@@ -39,7 +39,7 @@ jobs:
     name: Generate codecov
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - uses: actions/setup-python@v6
       name: Install Python
@@ -64,7 +64,7 @@ jobs:
     # if: false
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v4.0.0
